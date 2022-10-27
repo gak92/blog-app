@@ -19,8 +19,10 @@ RSpec.describe 'Users', type: :request do
   end
 
   describe 'Show single user details' do
+    
     before(:each) do
-      get '/users/1'
+      user = User.create(name: 'Ali Khan', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Researcher from UK.', posts_counter: 0)
+      get "/users/#{user.id}"
     end
     it 'Response will be successful.' do
       expect(response).to have_http_status(:ok)
