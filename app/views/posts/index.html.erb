@@ -1,2 +1,38 @@
-<h1>List of all post for a given user</h1>
-<p>Display all post for the given user</p>
+<div>
+  <h1>List of all post for a given user</h1>
+  <div>
+    <div>
+      <img src=<%= @user.photo %> />
+    </div>
+    <div>
+      <h2><%= @user.name %></h2>
+      <p>Number of posts: <%= @user.posts_counter %></p>
+    </div>
+  </div>
+
+  <div>
+    <ul>
+      <% @user.posts.each do |post| %>
+        <li>
+          <h3><%= link_to post.title, user_post_path(@user, post) %></h3>
+          <p><%= post.text%></p>
+          <div>
+            <p>Comments: <%= post.comments_counter%></p>
+            <p>Likes: <%= post.likes_counter%></p>
+          </div>
+
+          <div>
+            <ul>
+              <%= post.recent_comments.each do |comment| %>
+                <li>
+                  <p><%= comment.author.name %>: <%= comment.text %></p>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+</div>
