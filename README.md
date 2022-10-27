@@ -21,6 +21,12 @@ If you dont have Ruby installed on your computer, you can download it from [here
 
 If you installed git you can clone the code to your machine, or download a ZIP of all the files directly.
 
+Run `bundle install`
+
+### Test
+
+Run `rspec spec`
+
 ## Authors
 
 👤 **Ghazanfar Ali**
