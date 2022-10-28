@@ -32,6 +32,8 @@ gem 'jbuilder'
 # Add rubocop
 gem 'rubocop', '>= 1.0', '< 2.0'
 
+gem 'lib'
+
 gem 'rails-controller-testing'
 
 # Use Redis adapter to run Action Cable in production
