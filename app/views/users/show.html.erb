@@ -1,2 +1,34 @@
-<h1>User Details</h1>
-<p>User details will be shown here</p>
+<div>
+  <h1>User Details by id <%= @user.id %></h1>
+
+  <div>
+    <div>
+      <img src=<%= @user.photo %> />
+    </div>
+    <div>
+      <h2><%= @user.name %></h2>
+      <p>Number of posts: <%= @user.posts_counter %></p>
+    </div>
+  </div>
+
+  <div>
+    <p><%= @user.bio %> </p>
+  </div>
+
+  <div>
+    <ul>
+      <% @user.recent_posts.each do |post| %>
+        <li>
+          <h3><%= post.title%></h3>
+          <p><%= post.text%></p>
+          <div>
+            <p>Comments: <%= post.comments_counter%></p>
+            <p>Likes: <%= post.likes_counter%></p>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+    <%= link_to "See all posts", user_posts_path(@user) %>
+  </div>
+
+</div>

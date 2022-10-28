@@ -1,2 +1,21 @@
-<h1>Post Details</h1>
-<p>Post details will be shown here</p>
+<div>
+  <h1>Post Details</h1>
+
+  <div>
+    <h3> <%=@post.title%> <span> by <%= @post.author.name%> </span></h3>
+    <div>
+      <p>Comments: <%=@post.comments_counter%> </p>
+      <p>Likes: <%=@post.likes_counter%> </p> 
+    </div>
+    <p> <%=@post.text%> </p>
+  </div>
+
+  <div>
+    <ul>
+      <%@post.comments.each do |comment|%>
+        <li><p> <span><%=comment.author.name %> :</span> <%=comment.text%>  </p></li>
+      <%end%>
+    </ul>
+  </div>
+
+</div>
