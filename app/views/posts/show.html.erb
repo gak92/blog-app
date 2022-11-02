@@ -2,13 +2,21 @@
   <h1>Post Details</h1>
 
   <div>
-    <h3> <%=@post.title%> <span> by <%= @post.author.name%> </span></h3>
+    <h3> <%=@post.title %> <span> by <%= @post.author.name%> </span></h3>
     <div>
       <p>Comments: <%=@post.comments_counter%> </p>
       <p>Likes: <%=@post.likes_counter%> </p> 
     </div>
     <p> <%=@post.text%> </p>
   </div>
+
+  
+  <div class="post_counter">
+      <%= form_with url: "/posts/#{@post.id}/likes", scope: :like do |f| %>
+        <%= f.submit "Like this post" %>
+      <% end %>
+  </div>
+  <%= render partial: "create_comments",  local: { post: @post } %>
 
   <div>
     <ul>

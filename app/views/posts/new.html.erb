@@ -1,0 +1,9 @@
+<div>
+  <h1 class="page_title">Create a Post</h1>
+  <%= form_with model: @post, scope: :posts do |f| %>
+    <%= f.label :title, "Title" %>
+    <%= f.text_field :title, placeholder: "Title", required: true%>
+    <%= f.text_area :text, placeholder: "Type here...", rows: 14, required: true %>
+    <%= f.submit "Post" %>
+  <% end %>
+</div>
