@@ -12,7 +12,12 @@
   </div>
 
   <div>
+    <h2>Bio: </h2>
     <p><%= @user.bio %> </p>
+  </div>
+
+  <div>
+    <%= link_to "Add New Post", "/users/#{@user.id}/posts/new" %>
   </div>
 
   <div>
