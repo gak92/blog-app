@@ -13,7 +13,6 @@ RSpec.describe 'Comments', type: :request do
       @comment1 = Comment.create(author: @user, post: @post1, text: 'Hi guys')
       @comment2 = Comment.create(author: @user, post: @post1, text: 'hey')
       @comment3 = Comment.create(author: @user, post: @post1, text: 'hey')
-
     end
     it 'returns http success' do
       get "/users/#{@user.id}/posts/#{@post1.id}"

@@ -7,7 +7,6 @@ class PostsController < ApplicationController
     # @posts = @user.posts.includes(comments: [:author]).order(id: :desc)
     # @posts = Post.includes([:author]).where(posts: { author_id: @user.id })
     @posts = @user.posts
-
   end
 
   def show

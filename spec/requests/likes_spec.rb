@@ -13,7 +13,6 @@ RSpec.describe 'Likes', type: :request do
       @like1 = Like.create(author: @user, post: @post1)
       @like2 = Like.create(author: @user, post: @post1)
       @like3 = Like.create(author: @user, post: @post1)
-
     end
 
     it 'returns http success' do

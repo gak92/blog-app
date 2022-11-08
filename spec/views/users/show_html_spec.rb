@@ -2,12 +2,15 @@ require 'rails_helper'
 
 RSpec.describe 'Users', type: :feature do
   describe 'User show page' do
-
     before(:example) do
-      @user = User.create(name: 'Jerry', photo: 'https://picsum.photos/id/149/150/150', bio: 'Teacher', posts_counter: 1)
-      @post1 = Post.create(author: @user, title: 'Post_1 Title', text: 'First post description', comments_counter: 0, likes_counter: 0)
-      @post2 = Post.create(author: @user, title: 'Post_2 Title', text: 'Second post description', comments_counter: 0, likes_counter: 0)
-      @post3 = Post.create(author: @user, title: 'Post_3 Title', text: 'Third post description', comments_counter: 0, likes_counter: 0)
+      @user = User.create(name: 'Jerry', photo: 'https://picsum.photos/id/149/150/150', bio: 'Teacher',
+                          posts_counter: 1)
+      @post1 = Post.create(author: @user, title: 'Post_1 Title', text: 'First post description', comments_counter: 0,
+                           likes_counter: 0)
+      @post2 = Post.create(author: @user, title: 'Post_2 Title', text: 'Second post description', comments_counter: 0,
+                           likes_counter: 0)
+      @post3 = Post.create(author: @user, title: 'Post_3 Title', text: 'Third post description', comments_counter: 0,
+                           likes_counter: 0)
       visit user_path(@user)
     end
 
@@ -34,7 +37,7 @@ RSpec.describe 'Users', type: :feature do
     end
 
     it 'can see a button that lets me view all of a user posts' do
-      expect(page).to have_content("See all posts")
+      expect(page).to have_content('See all posts')
     end
 
     it 'When I click a user post, it redirects me to that posts show page' do
@@ -43,9 +46,8 @@ RSpec.describe 'Users', type: :feature do
     end
 
     it 'When I click to see all posts, it redirects me to the user post index page' do
-      click_link "See all posts"
+      click_link 'See all posts'
       expect(page).to have_current_path(user_posts_path(@user))
     end
-
   end
 end
