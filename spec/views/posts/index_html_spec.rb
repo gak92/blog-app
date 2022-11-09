@@ -6,7 +6,7 @@ RSpec.describe 'User post', type: :feature do
       @user = User.create(name: 'Jerry', photo: 'https://picsum.photos/id/149/150/150', bio: 'Teacher',
                           posts_counter: 1)
       @post = Post.create(author: @user, title: 'Post_1 Title', text: 'First post description', comments_counter: 0,
-                           likes_counter: 0)
+                          likes_counter: 0)
       @comment = Comment.create(post: @post, author: @user, text: 'This is first comment!')
       visit user_posts_path(@user)
     end
@@ -30,10 +30,6 @@ RSpec.describe 'User post', type: :feature do
     it 'can see some of the post body' do
       expect(page).to have_content(@post.text)
     end
-
-    # it 'can see the first comments on a post' do
-    #   expect(page).to have_content(@comment.text)
-    # end
 
     it 'can see how many comments a post has' do
       expect(page).to have_content(@post.comments_counter)

@@ -6,15 +6,15 @@ RSpec.describe 'User post', type: :feature do
       @user = User.create(name: 'Jerry', photo: 'https://picsum.photos/id/149/150/150', bio: 'Teacher',
                           posts_counter: 1)
       @post = Post.create(author: @user, title: 'Post_1 Title', text: 'First post description', comments_counter: 0,
-                           likes_counter: 0)
+                          likes_counter: 0)
       @comment = Comment.create(post: @post, author: @user, text: 'This is first comment!')
       visit user_post_path(@user.id, @post)
     end
-    
+
     it 'can see a post title' do
       expect(page).to have_content(@post.title)
     end
-    
+
     it 'can see who wrote the post' do
       expect(page.html).to have_content(@user.name)
     end
@@ -37,7 +37,6 @@ RSpec.describe 'User post', type: :feature do
 
     it 'can see the comment each commentor left' do
       expect(page).to have_content(@comment.text)
-    end 
-    
+    end
   end
 end
