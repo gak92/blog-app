@@ -37,7 +37,7 @@ RSpec.describe 'Posts', type: :request do
       expect(response).to render_template(:show)
     end
     it 'Response should include right placeholder text.' do
-      expect(response.body).to include('Post details will be shown here')
+      expect(response.body).to include('Post Details')
     end
   end
 end

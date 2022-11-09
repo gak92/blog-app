@@ -31,7 +31,7 @@ RSpec.describe 'Users', type: :request do
       expect(response).to render_template(:show)
     end
     it 'Response should include right placeholder text.' do
-      expect(response.body).to include('User details will be shown here')
+      expect(response.body).to include('User Details by id')
     end
   end
 end
