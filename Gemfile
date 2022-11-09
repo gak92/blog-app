@@ -53,6 +53,10 @@ gem 'bootsnap', require: false
 
 gem 'bullet'
 
+gem "bootstrap", "~> 5.0"
+
+gem "bootstrap_form", "~> 5.1"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
