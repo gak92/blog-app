@@ -1,4 +1,4 @@
-<%= form_with url: "/posts/#{@post.id}/comments", scope: :comments do |f| %>
+<%= bootstrap_form_with url: "/posts/#{@post.id}/comments", scope: :comments do |f| %>
 	<%= f.text_area :text, placeholder: "Type something here...", rows: 5, required: true %>
 	<%= f.submit "Comment" %>
 <% end %>
