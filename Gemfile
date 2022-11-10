@@ -53,9 +53,9 @@ gem 'bootsnap', require: false
 
 gem 'bullet'
 
-gem "bootstrap", "~> 5.0"
+gem 'bootstrap', '~> 5.0'
 
-gem "bootstrap_form", "~> 5.1"
+gem 'bootstrap_form', '~> 5.1'
 
 gem 'devise'
 
