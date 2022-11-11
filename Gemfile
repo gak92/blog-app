@@ -67,6 +67,11 @@ gem 'simple_command'
 
 gem 'cancancan'
 
+gem 'rswag'
+
+# gem 'rswag-api'
+# gem 'rswag-ui'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -78,6 +83,7 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails'
   gem 'rspec-rails'
+  gem 'rswag-specs'
 end
 
 group :development do
