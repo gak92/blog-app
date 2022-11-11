@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  load_and_authorize_resource
+
   def create
     @post = Post.find(params[:post_id])
     new_comment = current_user.comments.new(post_id: @post.id,
@@ -12,6 +14,13 @@ class CommentsController < ApplicationController
         end
       end
     end
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @post = @comment.post
+    @comment.destroy
+    redirect_to user_post_path(@post.author, @post)
   end
 
   private
