@@ -1,34 +1,39 @@
 <div>
-  <h1>User Details by id <%= @user.id %></h1>
+  <h1>User Details by <%= @user.name %> (<%= @user.id %>)</h1>
 
-  <div>
-    <div>
-      <img src=<%= @user.photo %> />
+  <div class="d-flex align-items-center">
+    <div class="w-25" style="width: 120px;">
+      <img src=<%= @user.photo %> class="img-thumbnail"/>
     </div>
-    <div>
+    <div class="w-25">
       <h2><%= @user.name %></h2>
       <p>Number of posts: <%= @user.posts_counter %></p>
     </div>
+    <div>
+      <h2>Bio: </h2>
+      <p><%= @user.bio %> </p>
+    </div>
   </div>
 
-  <div>
-    <h2>Bio: </h2>
-    <p><%= @user.bio %> </p>
-  </div>
-
-  <div>
-    <%= link_to "Add New Post", "/users/#{@user.id}/posts/new" %>
-  </div>
+  <% if current_user.id == @user.id %>
+    <div>
+      <%= link_to "Add New Post", "/users/#{@user.id}/posts/new" %>
+    </div>
+  <% end %>
 
   <div>
     <ul>
       <% @user.recent_posts.each do |post| %>
-        <li>
-          <h3><%= link_to post.title, user_post_path(@user.id, post) %></h3>
-          <p><%= post.text%></p>
-          <div>
-            <p>Comments: <%= post.comments_counter%></p>
-            <p>Likes: <%= post.likes_counter%></p>
+        <li class="card">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <h3><%= link_to post.title, user_post_path(@user.id, post) %></h3>
+            <div>
+              Comments: <%= post.comments_counter%>
+              Likes: <%= post.likes_counter%>
+            </div>
+          </div>
+          <div class="card-body">
+            <p><%= post.text%></p>
           </div>
         </li>
       <% end %>
