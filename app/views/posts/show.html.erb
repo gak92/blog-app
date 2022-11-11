@@ -21,7 +21,16 @@
   <div>
     <ul>
       <%@post.comments.each do |comment|%>
-        <li><p> <span><%=comment.author.name %> :</span> <%=comment.text%>  </p></li>
+        <li>
+          <p> 
+            <span><%=comment.author.name %> :</span> <%=comment.text%>
+
+            <% if can? :destroy, comment %>
+              <%= button_to 'Delete Comment', "/posts/#{@post.id}/comments/#{comment.id}", class: 'btn btn-sm btn-danger', method: :delete %>
+            <% end %>
+
+          </p>
+        </li>
       <%end%>
     </ul>
   </div>
