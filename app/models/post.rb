@@ -28,5 +28,4 @@ class Post < ApplicationRecord
     self.comments_counter ||= 0
     self.likes_counter ||= 0
   end
-  
 end
