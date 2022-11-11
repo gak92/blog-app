@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "users#index"
-  # root to: "users#index"
   post 'authenticate', to: 'authentication#authenticate'
 
   resources :users do
