@@ -21,7 +21,7 @@
               Likes: <%= post.likes_counter%>
               <% if can? :destroy, post%>
                 <%= form_with url: "/users/#{@user.id}/posts/#{post.id}" , method: :delete do |f|%>
-                  <%= f.submit 'Delete', class: 'btn btn-sm btn-danger' %>
+                  <%= f.submit 'Delete Post', class: 'btn btn-sm btn-danger' %>
                 <%end%>
               <%end%>
             </div>
@@ -44,6 +44,6 @@
     </ul>
   </div>
   <div>
-    <%= link_to "Back to User", user_path(@user) %>
+    <%= link_to "Back to User", user_path(@user), class: "btn btn-secondary" %>
   </div>
 </div>
