@@ -16,6 +16,13 @@
         <li>
           <h3><%= link_to post.title, user_post_path(@user.id, post) %></h3>
           <p><%= post.text%></p>
+
+          <% if can? :destroy, post%>
+            <%= form_with url: "/users/#{@user.id}/posts/#{post.id}" , method: :delete do |f|%>
+              <%= f.submit 'Delete', class: 'btn btn-sm btn-danger' %>
+            <%end%>
+          <%end%>
+
           <div>
             <p>Comments: <%= post.comments_counter%></p>
             <p>Likes: <%= post.likes_counter%></p>
