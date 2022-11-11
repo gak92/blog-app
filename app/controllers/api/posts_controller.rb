@@ -9,5 +9,4 @@ class Api::PostsController < ApplicationController
       render json: @posts
     end
   end
-
 end

@@ -29,7 +29,6 @@ class Ability
 
     user ||= User.new # guest user (not logged in)
 
-
     can :read, :all # start by defining rules for all users, also not logged ones
     return unless user.present?
 

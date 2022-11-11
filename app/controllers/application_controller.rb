@@ -25,5 +25,4 @@ class ApplicationController < ActionController::Base
     @current_user = AuthorizeApiRequest.call(request.headers).result
     render json: { error: 'Unauthorized user' }, status: 401 unless @current_user
   end
-
 end

@@ -26,5 +26,4 @@ class Api::CommentsController < ApplicationController
   def comment_params
     params.require(:comments).permit(:text)
   end
-
 end
