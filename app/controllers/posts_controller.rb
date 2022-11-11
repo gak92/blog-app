@@ -1,18 +1,14 @@
 class PostsController < ApplicationController
-  def index
-    # @user = User.find_by(id: params[:user_id])
-    @user = User.find(params[:user_id])
-    # @posts = Post.includes(comments: [:author]).where(posts: { author_id: @user.id })
+  load_and_authorize_resource
 
-    # @posts = @user.posts.includes(comments: [:author]).order(id: :desc)
-    # @posts = Post.includes([:author]).where(posts: { author_id: @user.id })
+  def index
+    @user = User.find(params[:user_id])
     @posts = @user.posts
   end
 
   def show
+    @user = User.find(params[:user_id])
     @post = Post.includes(comments: [:author]).find(params[:id])
-    # @user = User.find(params[:user_id])
-    # @post = Post.includes(comments: [:author]).where(posts: { id: params[:id] })[0]
   end
 
   def new
@@ -33,6 +29,12 @@ class PostsController < ApplicationController
         end
       end
     end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to user_posts_path(current_user, @post), notice: 'Post deleted successfully'
   end
 
   private
