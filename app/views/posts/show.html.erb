@@ -1,33 +1,47 @@
 <div>
   <h1>Post Details</h1>
 
-  <div>
-    <h3> <%=@post.title %> <span> by <%= @post.author.name%> </span></h3>
-    <div>
-      <p>Comments: <%=@post.comments_counter%> </p>
-      <p>Likes: <%=@post.likes_counter%> </p> 
+  <div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h3> <%=@post.title %> <span> by <%= @post.author.name%> </span></h3>
+      <div>
+        Comments: <%=@post.comments_counter%>
+        Likes: <%=@post.likes_counter%> 
     </div>
-    <p> <%=@post.text%> </p>
+    </div>
+
+    <div class="card-body">
+      <p> <%=@post.text%> </p>
+    </div>    
   </div>
 
   
-  <div class="post_counter">
+  <div class="post_counter m-2">
       <%= form_with url: "/posts/#{@post.id}/likes", scope: :like do |f| %>
-        <%= f.submit "Like this post" %>
+        <%= f.submit "Like this post", class: "btn btn-success" %>
       <% end %>
   </div>
   <%= render partial: "create_comments",  local: { post: @post } %>
 
-  <div>
-    <ul>
+  <div class="mt-3">
+    <ul class="list-group">
       <%@post.comments.each do |comment|%>
-        <li><p> <span><%=comment.author.name %> :</span> <%=comment.text%>  </p></li>
+        <li class="list-group-item d-flex justify-content-between">
+          <p> 
+            <strong><%=comment.author.name %> :</strong> <%=comment.text%>
+          </p>
+          <div>
+            <% if can? :destroy, comment %>
+              <%= button_to 'Delete Comment', "/posts/#{@post.id}/comments/#{comment.id}", class: 'btn btn-sm btn-danger', method: :delete %>
+            <% end %>
+          </div>
+        </li>
       <%end%>
     </ul>
   </div>
 
-  <div>
-    <%= link_to "Back to User", user_path(@post.author) %>
+  <div class="m-2">
+    <%= link_to "Back to User", user_path(@post.author), class: "btn btn-secondary" %>
   </div>
 
 </div>
