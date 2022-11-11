@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "users#index"
-  # root to: "users#index"
   post 'authenticate', to: 'authentication#authenticate'
 
   resources :users do
@@ -14,6 +13,16 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
     resources :likes
+  end
+
+  namespace :api do
+    resources :users do 
+      resources :posts 
+    end 
+    resources :posts do
+       resources :comments 
+       resources :likes 
+    end
   end
 
 end

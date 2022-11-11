@@ -1,0 +1,12 @@
+<h1>Show all comments</h1>
+
+<ul class="list-group">
+
+  <% @post.comments.includes([:author]).each do |comment| %>
+    <li class="list-group-item">
+      <strong><%= comment.author.name %>: </strong>
+      <%= comment.text %>
+    </li>
+  <% end %>
+
+</ul>
